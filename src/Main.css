@@ -1,0 +1,15 @@
+/* src/Main.css */
+.main {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 15vh;
+  }
+  
+  .main h2 {
+    color: #333;
+  }
+  
+  .main p {
+    color: #666;
+  }
+  
