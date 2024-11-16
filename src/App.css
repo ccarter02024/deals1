@@ -1,15 +1,20 @@
 /* src/App.css */
 
+/* App.css or index.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Nunito', sans-serif;
+
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 50vh;
 }
 
 .header, .footer {
@@ -75,4 +80,96 @@
   color: #fff;
   opacity: 0.8;
   animation: snowfall linear infinite;
+}
+
+/* Deals */
+
+.deal-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 12.4em;
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  .image {
+    height: 150px;
+    margin-bottom: 8px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .label {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .oldPrice {
+    text-decoration: line-through;
+    color: #ff6b6b;
+    font-size: 0.9em;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.8em;
+  }
+}
+
+.deal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: start;
+  align-items: stretch; /* Ensures each item has the same height */
+  width: 90%;
+  padding: 16px;
+  margin: 0 auto; /* Centers the component, giving equal left and right margins */
+  box-sizing: border-box;
+
+  .label, .foundWhen, .foundBy, .price, .retailer {
+    text-align:left;
+    font-size:10px;
+  }
+
+  .label {
+    font-size:12px;
+  }
+
+  .price {
+    font-size:15px;
+    margin:.2em 0;
+  }
+
+  .meta {
+    border-top: 1px solid #00e0ff;
+    transition: box-shadow 0.3s ease-in-out;
+    padding:1em 1em;
+  }
+  
+  .meta:hover {
+    box-shadow: 0px 0px 15px rgba(0, 224, 255, 0.6); /* Stronger shadow on hover */
+  }
+  
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.deal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

@@ -8,6 +8,12 @@
   align-items: center; /* Centers the content vertically */
 }
 
+.logo-wrapper {
+  width:90%;
+  margin:0 auto;
+  position:relative;
+}
+
 /* Optional: styling for the logo */
 .logo-container {
   display: flex; /* Flexbox to align the image */
@@ -22,7 +28,7 @@
 
 .u-menu {
   display: flex;
-  padding: 15px;
+  padding: 20px 20px 20px 15px;
   justify-content: right;
   right: 1em;
   position: absolute;
@@ -31,4 +37,117 @@
 .u-menu span {
   font-size:.7em;
   padding-right:1em;
+}
+
+/* Main search container */
+.search-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background: #f4f7fb; /* Soft background color */
+  position: absolute;
+  padding-top:5px;
+  padding-bottom:5px;
+  left:20px;
+  top:5px
+}
+
+/* Form styling */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1px;
+  width: 80%; /* Makes it responsive on mobile */
+  max-width: 500px; /* Limit the size on larger screens */
+  min-width: 300px; /* Limit the size on larger screens */
+  transition: all 0.3s ease;
+  max-height:10v;
+  border: 1px solid #ccc;
+
+}
+
+.search-form:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Search input styling */
+.search-input {
+  width: 100%;
+  padding: 2px;
+  border: none;
+  border-radius: 2px;
+  font-size: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  border: 2px solid #f1f1f1; /* Blue color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+/* Search button styling */
+.search-button {
+  border: none;
+  padding: 2px;
+  margin-left: 10px;
+  border-radius: 10%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: none; /* Darker blue on hover */
+}
+
+.search-button:hover {
+  background-color: #00e0ff; /* Darker blue on hover */
+}
+
+.search-button:focus {
+  outline: none;
+}
+
+/* Search icon inside the button */
+.search-icon {
+  color: #000;
+  font-size: 10px;
+  text-transform:uppercase;
+  padding:2px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .search-form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+
+  .search-button {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .search-input {
+    font-size: 12px;
+  }
+
+  .search-button {
+    padding: 8px;
+  }
 }

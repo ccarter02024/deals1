@@ -1,12 +1,11 @@
 // src/App.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
-import Snowfall from './Snowfall';
 import CenteredLogo from './CenteredLogo';
 import './App.css';
-
+import './forms.css';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       <CenteredLogo />
       <Header />
       <Main />
-      <Snowfall />
     </div>
   );
 }

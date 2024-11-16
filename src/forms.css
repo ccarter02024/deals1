@@ -1,0 +1,90 @@
+/* Overlay style for the modal background */
+.userForm .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal container style */
+.userForm .modal {
+    background-color: #1A1A1A;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 255, 255, 0.4);
+}
+
+/* Close button style */
+.userForm .closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #FF6B6B;
+}
+
+/* Heading style */
+.userForm h1 {
+    color: #00E0FF;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 0 0 5px #00E0FF, 0 0 10px #00E0FF;
+}
+
+/* Form container style */
+.userForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Label style */
+.userForm label {
+    color: #00E0FF;
+    font-size: 14px;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Input field style */
+.userForm input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #00E0FF;
+    background-color: #333;
+    color: #FFF;
+    outline: none;
+    boxShadow: 0 0 5px #00E0FF, inset 0 0 5px #00E0FF;
+}
+
+.userForm button {
+    padding:10px;
+    font-size:16px;
+    background-color:#00E0FF;
+    color: #1A1A1A;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px #00E0FF, 0 0 20px #00E0FF;
+}
+
+.userForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
