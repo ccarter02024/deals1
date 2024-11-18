@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import UserForm from './components/UserForm';
 import UserList from './components/UserList';
 import styled from 'styled-components';
 
@@ -7,8 +6,7 @@ const UserReg = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: '',
-    confirmPassword: '',
+    password: ''
   });
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -23,13 +21,7 @@ const UserReg = () => {
     setError('');
     setSuccessMessage('');
 
-    const { username, email, password, confirmPassword } = formData;
-
-    // Validate password and confirm password
-    if (password !== confirmPassword) {
-      setError("Passwords don't match");
-      return;
-    }
+    const { username, email, password } = formData;
 
     try {
       const response = await fetch('http://localhost:5000/api/users', {
@@ -40,14 +32,20 @@ const UserReg = () => {
         body: JSON.stringify({ username, email, password }),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error response:', errorData);
+        setError(errorData.message || 'An error occurred');
+        return;
+      }
+
       if (response.ok) {
         const data = await response.json();
         setSuccessMessage(`User ${data.username} registered successfully!`);
         setFormData({
           username: '',
           email: '',
-          password: '',
-          confirmPassword: '',
+          password: ''
         });
       } else {
         const errorData = await response.json();
@@ -86,14 +84,6 @@ const UserReg = () => {
             onChange={handleChange}
             required
           />
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         <button type="submit">Register</button>
@@ -101,5 +91,7 @@ const UserReg = () => {
     </div>
   );
 };
+
+
 
 export default UserReg;

@@ -1,7 +1,44 @@
 // LoginModal.js
-import React from 'react';
+import React, { useState } from 'react';
 
 const LoginModal = ({ closeModal }) => {
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccessMessage('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setSuccessMessage(data.message); // Show success message
+        setFormData({ username: '', password: '' });
+        closeModal(); // Close the modal on success
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || 'An error occurred');
+      }
+    } catch (err) {
+      setError('Failed to log in. Please try again.');
+    }
+  };
+
   const handleBackgroundClick = (e) => {
     if (e.target === e.currentTarget) closeModal();
   };
@@ -11,12 +48,31 @@ const LoginModal = ({ closeModal }) => {
       <div style={styles.modal}>
         <button onClick={closeModal} style={styles.closeButton}>X</button>
         <h1 style={styles.heading}>Login Here</h1>
-        <form style={styles.form}>
+        <form onSubmit={handleSubmit} style={styles.form}>
           <label htmlFor="username" style={styles.label}>Username</label>
-          <input type="text" id="username" placeholder="Enter your username" style={styles.input} />
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter your username"
+            value={formData.username}
+            onChange={handleChange}
+            style={styles.input}
+            required
+          />
           
           <label htmlFor="password" style={styles.label}>Password</label>
-          <input type="password" id="password" placeholder="Enter your password" style={styles.input} />
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={handleChange}
+            style={styles.input}
+            required
+          />
+
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
 
           <button type="submit" style={styles.button}>Login</button>
         </form>
